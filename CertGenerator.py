@@ -3,6 +3,8 @@ import os
 import json
 import shutil
 import copy
+import cairosvg
+
 rows = []
 
 # Making a Temporary Directory for Generation of Files
@@ -53,6 +55,7 @@ with open("data.csv", 'r',encoding="utf-8-sig") as file:
         rows.append(row)
         with open(tmpDirectory +'/Certificate'+str(counter)+'.svg', 'w') as file:
            file.write(certData)
+        cairosvg.svg2png(url=tmpDirectory +'/Certificate'+str(counter)+'.svg', write_to=tmpDirectory +'/Certificate'+str(counter)+'.png')
         counter = counter + 1
 # print(header)
 # print(rows)
